@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import Loading from "./blog/[slug]/loading";
 async function getData(){
+  await new Promise(resolve => setTimeout(resolve,3000))
   const query = `
   *[_type == 'blog']| order(_createdAt desc){
     title,
