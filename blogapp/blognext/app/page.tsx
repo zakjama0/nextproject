@@ -1,13 +1,31 @@
-import Image from "next/image";
-import NavBar from "./components/NavBar";
+import { simpleBlogCard } from "./sanityLib/interface";
+import { client } from "./sanityLib/sanity";
 
-export default function Home() {
+async function getData(){
+  const query = `
+  *[_type == 'blog']| order(_createdAt desc){
+    title,
+      smallDescription,
+      "currentSlug" :slug.current,
+      titleImage
+  }
+  `;
+
+  const data = await client.fetch(query)
+  return data;
+
+}
+
+export default async function Home() {
+// We are in the server component so adding async is safe as everything is on the server
+
+  const data: simpleBlogCard[] = await getData();
+
+
+  console.log(data)
   return (
-    <>
-    <NavBar />
-    <h1>Hello</h1>
-    
-    
-    </>
+    <div>
+      
+    </div>
   );
 }
