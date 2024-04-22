@@ -5,6 +5,8 @@ import {PortableText} from "@portabletext/react"
 
 
 async function getData(slug: string){
+    // imitating delay, a 3 second delay
+    await new Promise(resolve => setTimeout(resolve,3000))
     const query = `*[_type == 'blog' && slug.current == '${slug}']{
         "currentSlug": slug.current,
           title,

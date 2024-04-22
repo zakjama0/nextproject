@@ -4,6 +4,8 @@ import { client, urlFor } from "./sanityLib/sanity";
 import Image from "next/image"
 import { Button } from "@/UIcomponents/ui/button";
 import Link from "next/link";
+import { Suspense } from "react";
+import Loading from "./blog/[slug]/loading";
 async function getData(){
   const query = `
   *[_type == 'blog']| order(_createdAt desc){
@@ -28,6 +30,7 @@ export default async function Home() {
   console.log(data)
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 mt-5 gap-5" >
+      
       {data.map((post, idx) =>(
         // idx is an iterator id
         <Card key={idx}>
@@ -48,6 +51,7 @@ export default async function Home() {
 
         </Card>
       ))}
+  
 
     </div>
   );
