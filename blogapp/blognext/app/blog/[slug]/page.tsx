@@ -39,7 +39,7 @@ export default async function BlogArticle({params}:{params:{slug: string}}){
          priority
          className="rounded-lg mt-8 border"/>
 
-         <div className="mt-16 prose prose-xl prose-blue dark:prose-invert">
+         <div className="mt-16 prose prose-lg prose-blue dark:prose-invert">
             <PortableText value={data.content} />
             {/* Download Tailwind CSS Typography and use prose to make the text readable */}
          </div>
