@@ -6,6 +6,7 @@ import { Button } from "@/UIcomponents/ui/button";
 import Link from "next/link";
 import { Suspense } from "react";
 import Loading from "./blog/[slug]/loading";
+import Form from "./components/form";
 async function getData(){
   await new Promise(resolve => setTimeout(resolve,3000))
   const query = `
@@ -16,7 +17,7 @@ async function getData(){
       titleImage
   }
   `;
-
+  
   const data = await client.fetch(query)
   return data;
 
@@ -52,6 +53,8 @@ export default async function Home() {
 
         </Card>
       ))}
+
+      
   
 
     </div>

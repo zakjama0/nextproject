@@ -11,5 +11,6 @@ export const client =createClient ({
 const builder = imageUrlBuilder(client);
 
 export function urlFor(source: any){
+    // Allowing Images to be processed
     return builder.image(source);
 }

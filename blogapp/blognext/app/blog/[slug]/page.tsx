@@ -16,7 +16,42 @@ async function getData(slug: string){
       const data = await client.fetch(query)
       return data;
 }
+const postData = async() =>{ 
+    try {
+        const response = await fetch(`https://55yyot17.api/v1/data/mutate/production`,
+        {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization" : "Bearer skjMIQimluKO32FH09q2V4TwSa5ocAP1lPWgggXhvsJC4Yt7cKRQXsjaINGTeCvQN55o7pBqvhdhx4hcktniXEtjpe5sa1hulk9CzqReAndWVTFTQa1Mnu4WcGkdloswUpQ1kgtV6aA0bLIuF9G3d45fx2oDlmUzKhkKS7CmCSSp2KCeB6rr"
+            },
+            body: JSON.stringify({
+                mutations:[
+                    {
+                        create:{
+                            _type:"any"
+                        }
+                    }
+                ]
+            })
+        });
+        if (!response.ok) {
+            throw new Error("Failed to create document in Sanity");
+        }
 
+        const data = await response.json();
+        console.log("Document created:", data);
+
+
+    }
+    catch(error){
+        console.log("Document created:", error);
+
+    }
+
+}
+
+postData();
 
 export default async function BlogArticle({params}:{params:{slug: string}}){
    const data: fullBlog = await getData(params.slug);
