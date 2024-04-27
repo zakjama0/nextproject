@@ -6,7 +6,7 @@ import { Button } from "@/UIcomponents/ui/button";
 import Link from "next/link";
 import { Suspense } from "react";
 import Loading from "./blog/[slug]/loading";
-import SanityForm from "./components/form";
+import SanityForm from "./components/Form";
 async function getData(){
   await new Promise(resolve => setTimeout(resolve,3000))
   const query = `
@@ -23,13 +23,15 @@ async function getData(){
 
 }
 
+
+
 export default async function Home() {
 // We are in the server component so adding async is safe as everything is on the server
 
   const data: simpleBlogCard[] = await getData();
 
 
-  console.log(data)
+  // console.log(data)
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 mt-5 gap-5" >
       

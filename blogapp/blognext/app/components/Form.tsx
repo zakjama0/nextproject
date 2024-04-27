@@ -20,7 +20,6 @@ const SanityForm: React.FC = () => {
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     console.log(name,value)
-    debugger;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -48,7 +47,7 @@ const SanityForm: React.FC = () => {
         content: '',
       });
     } catch (error) {
-      console.error('Failed to post data to Sanity:', error);
+      console.log('Failed to post data to Sanity:', error);
       alert('Failed to post data to Sanity. Please try again.');
     }
   };
@@ -61,7 +60,7 @@ const SanityForm: React.FC = () => {
           type="text"
           name="title"
           value={formData.title}
-          onChange={(e: any) => console.log(e.target.value)}
+          onChange={handleChange}
           required
         />
       </div>
